@@ -1,4 +1,4 @@
-<h1>Welcome to Quizuno</h1>
+<h1>Welcome to Quizdos (formerly Quizuno)</h1>
 
 <p>
 This page shows some of the progress that I have made,
@@ -6,3 +6,44 @@ being able to navigate around the folders created by vagrant
 necessary to create web apps. Or in this case Quiz No. 1
 which is a static content page. I believe this should fit the criteria.
 </p>
+
+<p>
+Update: 4/22/2017
+This is my quizdos update. And here's a random button, with a random request.
+<br />      
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm float-center new-lesson-button" data-toggle="modal" data-target="#newFavoriteModal">
+What is..?
+</button>
+<br />
+<br />
+<% if @favorite.present? %>
+Current favorite food:
+<div class="grey">
+<%= @favorite.description %>
+<% end %>
+</div>
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="newFavoriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">x</span>
+        </button>
+        <h4 class="modal-title" id="newFavoriteModal">What is your favorite food?</h4>
+      </div>
+      <%= simple_form_for Favorite.new, url: favorites_path do |f| %>
+        <div class="modal-body">
+          <%= f.input :description %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Add favorite", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
